@@ -11,6 +11,8 @@ class Game{
         this.player = new Player();
         this.background = new Background();
         this.obstacles = []; 
+        // this.rocket = new Rocket();
+        this.rocket = [];
 
     }
 
@@ -33,26 +35,48 @@ class Game{
         // console.log('game drawing');
         this.background.draw();
         this.player.draw();
+        // this.rocket.draw(this.player.y);
+        
+        
 
         // frameCount is provided by P5
         // console.log(frameCount)
         if (frameCount % 60 === 0) {
             this.obstacles.push(new Obstacle(this.meteorImage))
-            console.log(this.obstacles);
+            // console.log(this.obstacles);
         }
         this.obstacles.forEach(function (obstacle) {
             obstacle.draw();
        })
-    //     // this needs to be an arrow function otherwise the context of 'this'
-    //     // will not be correct
-    //     this.obstacles = this.obstacles.filter(obstacle => {
-    //         // console.log(this)
-    //         if (obstacle.collision(this.player) || obstacle.x < 0) {
-    //             return false
-    //         } else {
-    //             return true
-    //         }
-    //     })
+
+       this.rocket.forEach(function (rocket) {
+        rocket.draw();
+   })
+
+
+        // this needs to be an arrow function otherwise the context of 'this'
+        // will not be correct
+        this.obstacles = this.obstacles.filter(obstacle => {
+            // console.log(this)
+            if (obstacle.x < 0) {
+                return false;
+            } else {
+                return true;
+            }
+        })
+
+        for (let i = 0; i < this.obstacles.length; i++){
+            for (let j = 0; j < this.rocket.length; j++){
+
+                if (dist (this.obstacles[i].x, this.obstacles[i].y, this.rocket[j].rocketX, this.rocket[j].rocketY)<20){
+                    //console.log("colission")
+                this.obstacles.splice(i, 1);
+                this.rocket.splice(i, 1);
+                game.player.score += 10;
+                }
+            
+            }
+        
     }
 
 
