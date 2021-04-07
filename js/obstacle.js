@@ -29,7 +29,7 @@ class Obstacle {
   }
 
   draw() {
-    this.x--;
+    this.x -=2;
     image(this.image, this.x, this.y, this.width, this.height);
 
   }

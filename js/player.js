@@ -6,6 +6,7 @@ class Player {
     this.x = 0;
     this.y = height / 2;
     this.velocity = 5;
+    this.cooldown = false;
   }
 
   draw() {
@@ -26,11 +27,18 @@ class Player {
       this.moveDown();
     }
 
-    if (keyIsDown(32)) {
-     this.shoot();
+    if (keyIsDown(32) && !this.cooldown) {
+     this.cooldown = true;
+      this.shoot();
+     setTimeout( () => {
+       this.cooldown = false;
+     },1000)
+
     }
     
   }
+  
+
 
   moveUp() {
     this.y = this.y - this.velocity;
@@ -41,10 +49,10 @@ class Player {
   }
 
   shoot() {
-    console.log("shoot")
+    //console.log("shoot")
     let rocket = new Rocket(this.y)
     game.rocket.push(rocket)
   }
 
-
 }
+
