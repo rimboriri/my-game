@@ -11,7 +11,7 @@ class Rocket {
   }
 
   draw() {
-    this.rocketX++;
+    this.rocketX +=3  ;
     image(game.rocketImage, this.rocketX, this.rocketY,this.rocketWidth,this.rocketHeight);
 
     // if (this.fire == true && this.rocketPosition == 0) {

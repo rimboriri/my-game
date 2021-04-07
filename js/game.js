@@ -12,6 +12,7 @@ class Game {
     this.obstacles = [];
     // this.rocket = new Rocket();
     this.rocket = [];
+   
   }
 
   preload() {
@@ -42,7 +43,7 @@ class Game {
     this.obstacles.forEach(function (obstacle) {
       obstacle.draw();
     });
-
+    
     this.rocket.forEach(function (rocket) {
       rocket.draw();
     });
@@ -75,7 +76,7 @@ class Game {
             this.obstacles[i].y,
             this.rocket[j].rocketX,
             this.rocket[j].rocketY
-          ) < 20
+          ) < 40
         ) {
           //console.log("colission")
           console.log(this.rocket);
@@ -93,9 +94,6 @@ class Game {
         if (dist(this.obstacles[i].x, this.obstacles[i].y, this.player.x, this.player.y) < 20 ){
             gameOver();
     }  }
-
-   
-    
 
    
   }

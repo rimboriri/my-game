@@ -19,7 +19,7 @@ class Obstacle {
 
     
     // then use the p5 function dist() to calculate the distance
-    if (dist(obstacleX, obstacleY, rocketX, rocketY) < 25) {
+    if (dist(obstacleX, obstacleY, rocketX, rocketY) < 50) {
       return false;
     } else {
       // we have a collision

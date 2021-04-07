@@ -50,7 +50,7 @@ class Player {
 
   shoot() {
     //console.log("shoot")
-    let rocket = new Rocket(this.y)
+    let rocket = new Rocket(this.y+17)
     game.rocket.push(rocket)
   }
 

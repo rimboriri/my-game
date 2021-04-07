@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+#section1{
+background-image: url(assets/background-3.png)
+   
+}
+
+#section1 div{
+    height: 100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: white;
+
+}
+
+#section2 div{
+   
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
