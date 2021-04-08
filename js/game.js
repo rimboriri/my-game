@@ -10,7 +10,6 @@ class Game {
     this.player = new Player();
     this.background = new Background();
     this.obstacles = [];
-    // this.rocket = new Rocket();
     this.rocket = [];
    
   }
@@ -23,11 +22,15 @@ class Game {
     this.playerImage = loadImage("assets/player1.png");
     this.rocketImage = loadImage("assets/rocket.png");
     this.meteorImage = loadImage("assets/meteor-1.png");
+    this.rocketSound = loadSound("assets/sfx_laser1.ogg");
+    this.looseSound = loadSound("assets/sfx_lose.ogg");
+    this.hitObstacle = loadSound("assets/sfx_twoTone.ogg");
   }
 
   draw() {
+
+    
     clear();
-    //Score
 
     // console.log('game drawing');
     this.background.draw();
@@ -39,7 +42,7 @@ class Game {
     if (frameCount % 60 === 0) {
       this.obstacles.push(new Obstacle(this.meteorImage));
       // console.log(this.obstacles);
-    }
+    }  
     this.obstacles.forEach(function (obstacle) {
       obstacle.draw();
     });
@@ -53,7 +56,8 @@ class Game {
     this.obstacles = this.obstacles.filter((obstacle) => {
       // console.log(this)
       if (obstacle.x < 0 - obstacle.width) {
-        return false;
+        this.looseSound.play();
+        gameOver();
       } else {
         return true;
       }
@@ -83,7 +87,8 @@ class Game {
           this.rocket.splice(j, 1);
           this.obstacles.splice(i, 1);
           //console.log(this.rocket)
-          game.player.score += 5;
+          this.hitObstacle.play(); 
+          game.player.score += 5; 
           console.log(game.player.score) 
         }
       }
@@ -91,8 +96,10 @@ class Game {
     }
 
     for (let i = 0; i < this.obstacles.length; i++) {
-        if (dist(this.obstacles[i].x, this.obstacles[i].y, this.player.x, this.player.y) < 20 ){
-            gameOver();
+        if (dist(this.obstacles[i].x, this.obstacles[i].y, this.player.x, this.player.y) < 20 ){  
+          this.looseSound.play();
+          gameOver();
+
     }  }
 
    
@@ -101,8 +108,9 @@ class Game {
 
 function gameOver(){
     noLoop();
-    textSize(width / 10)
-    text('GAME OVER',200,200,600,600)
-    text('Score',60,60)
+    textSize(width / 10);
+    textFont('monospace');
+    text('GAME OVER',200,200,600,600);
+    text('Score',60,60);
     text(game.player.score, 60, 120);
 }

@@ -31,6 +31,11 @@ class Obstacle {
   draw() {
     this.x -=2;
     image(this.image, this.x, this.y, this.width, this.height);
+    if (this.y > 500 || this.y < 20){
+    return false;
+  }
+
+  
 
   }
 

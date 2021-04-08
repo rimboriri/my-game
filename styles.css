@@ -1,26 +1,49 @@
 *{
     margin: 0;
     padding: 0;
-
+    font-family:monospace;
 }
+
+
+html, body {margin: 0; height: 100%; overflow: hidden}
 
 #section1{
 background-image: url(assets/background-3.png)
-   
+}
+
+h1{
+    font-size: 4rem;
+    padding-top: 40px;
 }
 
 #section1 div{
     height: 100px;
     display:flex;
+    flex-direction: column;
     align-items:center;
     justify-content:center;
     color: white;
+    font-size: 1.5rem;
+    padding-bottom:40px;
+    padding-top: 20px;;
 
 }
 
-#section2 div{
-   
+#canvas{
+    background-image:url(assets/background-3.png);
     display:flex;
     align-items:center;
     justify-content:center;
 }
+
+
+#section3{
+    background-image: url(assets/background-3.png)
+       
+}
+
+#section3 div{
+    height: 100%;
+
+}
+

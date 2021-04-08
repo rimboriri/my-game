@@ -30,12 +30,18 @@ class Player {
     if (keyIsDown(32) && !this.cooldown) {
      this.cooldown = true;
       this.shoot();
+      game.rocketSound.play(); 
      setTimeout( () => {
        this.cooldown = false;
-     },1000)
+     },600)
 
     }
-    
+
+    fill(255);
+    textSize(20);
+    textFont('monospace');
+    text('Score:', 450, 35);
+    text(this.score,550,35);    
   }
   
 
